@@ -1,0 +1,58 @@
+body {
+    background-color: #F8F9FA; /* Fondo claro */
+}
+
+.navbar {
+    background-color: #2A3E66; /* Azul Marino */
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.navbar-toggler {
+    border-color: white; /* Cambia el color del borde del botón */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.nav-link {
+    border: 2px solid #ffffff; /* Añadir borde azul marino */
+    border-radius: 5px; /* Añadir bordes redondeados */
+    color: white; /* Color del texto */
+    background-color: transparent; /* Fondo transparente */
+    padding: 5px 10px; /* Espaciado interno */
+    margin: 5px; /* Espaciado externo */
+}
+
+.nav-link:hover {
+    background-color: #ffffff; /* Fondo azul marino al pasar el ratón */
+    color: rgb(0, 0, 0); /* Color del texto al pasar el ratón */
+}
+
+.jumbotron {
+    background-color: #E0E0E0; /* Fondo gris claro */
+    color: #333333; /* Texto oscuro */
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-img-size {
+    height: 500px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+}
+
+.footer {
+    background-color: #2A3E66; /* Azul Marino */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+
+}
+
