@@ -1,0 +1,7 @@
+.bg-primary-dark { background-color: #2A3E66; }  /* Azul oscuro */
+        .btn-primary-dark { background-color: #2A3E66; color: #fff; }
+        .btn-primary-dark:hover { background-color: #1f2f50; }
+        .btn-success { background-color: #4CAF50; color: #fff; }
+        .btn-success:hover { background-color: #43a047; }
+        .text-dark-gray { color: #333333; } /* Gris oscuro */
+        .bg-light-gray { background-color: #F5F7FA; } /* Gris claro */
