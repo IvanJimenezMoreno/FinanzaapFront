@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos.component';
+import { PagosComponent } from './pagos/pagos.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos.component';
     LoginComponent,
     PrincipalComponent,
     PresupuestosComponent,
+    PagosComponent,
   ],
   imports: [
     BrowserModule,
