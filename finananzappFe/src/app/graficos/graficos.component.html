@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-primary-dark">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">FinanzApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/principal">Panel de Control</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/presupuestos">Presupuestos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/movimientos">Movimientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/graficos">Gráficos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/recordatorios">Recordatorios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" routerLink="/pagos">Pagos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary-dark mx-2" (click)="cerrarSesion()">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-4">Gráficos e Informes</h1>
+            <p class="lead">Visualiza tus ingresos y gastos mensuales</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <google-chart
+                [type]="chartType"
+                [data]="chartData"
+                [columns]="chartColumns"
+                [options]="chartOptions"
+                class="google-chart">
+            </google-chart>
+        </div>
+    </div>
+</div>

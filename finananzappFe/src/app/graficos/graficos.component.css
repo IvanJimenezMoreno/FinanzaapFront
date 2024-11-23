@@ -1,0 +1,7 @@
+
+  
+  .google-chart {
+  width: 100%; /* Ajusta el ancho máximo según sea necesario */
+  height: 400px; /* Ajusta la altura según sea necesario */
+  min-height: 400px;
+}

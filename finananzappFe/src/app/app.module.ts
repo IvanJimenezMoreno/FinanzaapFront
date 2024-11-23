@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos.component';
 import { PagosComponent } from './pagos/pagos.component';
+import { GraficosComponent } from './graficos/graficos.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { PagosComponent } from './pagos/pagos.component';
     PrincipalComponent,
     PresupuestosComponent,
     PagosComponent,
+    GraficosComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,10 @@ import { PagosComponent } from './pagos/pagos.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule  
+    RouterModule,
+    GoogleChartsModule,
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

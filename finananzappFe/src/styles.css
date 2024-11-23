@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
-    background-color: lightgray;
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .bg-primary-dark { background-color: #2A3E66; }  /* Azul oscuro */
@@ -13,10 +16,25 @@ body{
 .bg-light-gray { background-color: #F5F7FA; } /* Gris claro */
 
 
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+body {
+    background-color: lightgray;
+}
+
+
 .footer {
     background-color: #2A3E66; /* Azul Marino */
     color: white;
     padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     width: 100%;
         

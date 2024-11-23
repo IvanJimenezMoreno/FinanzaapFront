@@ -35,21 +35,24 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Pagos</h1>
-            <button class="btn btn-primary-dark mt-3" (click)="mostrarFormulario = !mostrarFormulario">
-                {{ mostrarFormulario ? 'Cancelar' : 'Crear Pago' }}
+            <h1>Pagos e Ingresos</h1>
+            <button class="btn btn-primary-dark mt-3 me-2" (click)="mostrarFormularioPago = !mostrarFormularioPago">
+                {{ mostrarFormularioPago ? 'Cancelar' : 'Crear Pago' }}
+            </button>
+            <button class="btn btn-success mt-3" (click)="mostrarFormularioIngreso = !mostrarFormularioIngreso">
+                {{ mostrarFormularioIngreso ? 'Cancelar' : 'Crear Ingreso' }}
             </button>
         </div>
     </div>
 
-    <div class="row mt-4" *ngIf="mostrarFormulario">
+    <div class="row mt-4" *ngIf="mostrarFormularioPago">
         <div class="col-md-6 offset-md-3">
-            <div class="card p-4">
-                <div class="card-header text-center bg-primary-dark text-white">
+            <div class="card p-4 border-primary shadow-sm">
+                <div class="card-header text-center bg-primary text-white">
                     <h3>Crear Pago</h3>
                 </div>
                 <div class="card-body">
-                    <form (ngSubmit)="onSubmit()">
+                    <form (ngSubmit)="onSubmitPago()">
                         <div class="mb-3">
                             <label for="nombre_pago" class="form-label text-dark-gray">Nombre del Pago</label>
                             <input type="text" class="form-control" id="nombre_pago" [(ngModel)]="pago.nombre_pago" name="nombre_pago" required>
@@ -66,7 +69,38 @@
                             <label for="descripcion" class="form-label text-dark-gray">Descripción</label>
                             <input type="text" class="form-control" id="descripcion" [(ngModel)]="pago.descripcion" name="descripcion" required>
                         </div>
-                        <button type="submit" class="btn btn-primary-dark">Crear Pago</button>
+                        <button type="submit" class="btn btn-primary-dark w-100">Crear Pago</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4" *ngIf="mostrarFormularioIngreso">
+        <div class="col-md-6 offset-md-3">
+            <div class="card p-4 border-success shadow-sm">
+                <div class="card-header text-center bg-success text-white">
+                    <h3>Crear Ingreso</h3>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmitIngreso()">
+                        <div class="mb-3">
+                            <label for="nombre_ingreso" class="form-label text-dark-gray">Nombre del Ingreso</label>
+                            <input type="text" class="form-control" id="nombre_ingreso" [(ngModel)]="ingreso.nombre" name="nombre_ingreso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha_ingreso" class="form-label text-dark-gray">Fecha del Ingreso</label>
+                            <input type="date" class="form-control" id="fecha_ingreso" [(ngModel)]="ingreso.fecha" name="fecha_ingreso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="monto_ingreso" class="form-label text-dark-gray">Monto del Ingreso</label>
+                            <input type="number" class="form-control" id="monto_ingreso" [(ngModel)]="ingreso.monto_ingreso" name="monto_ingreso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion_ingreso" class="form-label text-dark-gray">Descripción</label>
+                            <input type="text" class="form-control" id="descripcion_ingreso" [(ngModel)]="ingreso.descripcion" name="descripcion_ingreso" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Crear Ingreso</button>
                     </form>
                 </div>
             </div>
@@ -74,22 +108,40 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-md-12 text-center" *ngIf="pagos.length === 0">
-            <p>Todavía no tienes pagos creados</p>
+        <div class="col-md-12 text-center" *ngIf="pagos.length === 0 && ingresos.length === 0">
+            <p>Todavía no tienes pagos ni ingresos creados</p>
         </div>
-        <div class="col-md-4 mb-4" *ngFor="let pago of pagos">
-            <div class="card p-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{ pago.nombre_pago }}</h5>
-                    <p class="card-text">Fecha: {{ pago.fecha_pago | date }}</p>
-                    <p class="card-text">Monto: {{ pago.monto_pago | currency }}</p>
-                    <p class="card-text">Descripción: {{ pago.descripcion }}</p>
-                    <div *ngIf="!pago.estado_pago" class="text-danger mt-2">
-                        Pendiente de pago
-                        <button class="btn btn-success mt-2" (click)="pagar(pago.id_pago)">Pagar</button>
+        <div class="col-md-6 mb-4" *ngIf="pagos.length > 0">
+            <h3 class="text-center">Pagos</h3>
+            <div *ngFor="let pago of pagos">
+                <div class="card p-4 mb-4 border-primary shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pago.nombre_pago }}</h5>
+                        <p class="card-text">Fecha: {{ pago.fecha_pago | date }}</p>
+                        <p class="card-text">Monto: {{ pago.monto_pago | currency }}</p>
+                        <p class="card-text">Descripción: {{ pago.descripcion }}</p>
+                        <div *ngIf="!pago.estado_pago" class="text-danger mt-2">
+                            Pendiente de pago
+                            <button class="btn btn-success mt-2 w-100" (click)="pagar(pago.id_pago)">Pagar</button>
+                        </div>
+                        <div *ngIf="pago.estado_pago" class="text-success mt-2">
+                            Pagado
+                        </div>
+                        <button class="btn btn-danger mt-2 w-100" (click)="borrarPago(pago.id_pago)">Borrar</button>
                     </div>
-                    <div *ngIf="pago.estado_pago" class="text-success mt-2">
-                        Pagado
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4" *ngIf="ingresos.length > 0">
+            <h3 class="text-center">Ingresos</h3>
+            <div *ngFor="let ingreso of ingresos">
+                <div class="card p-4 mb-4 border-success shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ingreso.nombre }}</h5>
+                        <p class="card-text">Fecha: {{ ingreso.fecha | date }}</p>
+                        <p class="card-text">Monto: {{ ingreso.monto_ingreso | currency }}</p>
+                        <p class="card-text">Descripción: {{ ingreso.descripcion }}</p>
+                        <button class="btn btn-danger mt-2 w-100" (click)="borrarIngreso(ingreso.id_ingreso)">Borrar</button>
                     </div>
                 </div>
             </div>

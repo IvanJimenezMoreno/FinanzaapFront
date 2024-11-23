@@ -30,4 +30,11 @@ export class PagoService {
     });
     return this.http.put(`${this.apiUrl}/${id_pago}/estado`, { estado_pago }, { headers });
   }
+
+  borrarPago(id_pago: number, token: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(`${this.apiUrl}/${id_pago}`, { headers });
+  }
 }
