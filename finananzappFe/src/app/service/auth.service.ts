@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private apiUrl = 'http://localhost:8000/api/';
+  public isAdmin: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -18,4 +19,10 @@ export class AuthService {
   login(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}login`, userData);
   }
+
+  setAdminStatus(isAdmin: boolean): void {
+    this.isAdmin = isAdmin;
+  }
+
+  
 }

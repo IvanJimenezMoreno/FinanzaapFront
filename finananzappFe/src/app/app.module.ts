@@ -15,6 +15,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { GraficosComponent } from './graficos/graficos.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { MovimientosComponent } from './movimientos/movimientos.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     PresupuestosComponent,
     PagosComponent,
     GraficosComponent,
+    MovimientosComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,10 +23,11 @@ export class LoginComponent {
         console.log('usuario autenticado:', response);
         localStorage.setItem('usuario', JSON.stringify(response.user));
         localStorage.setItem('token', response.access_token);
-         this.mensaje = 'Inicio de sesión exitoso. Redirigiendo al inicio...';
-         setTimeout(() => {
+        this.authService.setAdminStatus(response.user.is_admin);
+        this.mensaje = 'Inicio de sesión exitoso. Redirigiendo al inicio...';
+        setTimeout(() => {
           this.router.navigate(['/principal']);
-         }, 3000); // Redirigir después de 3 segundos
+        }, 3000); // Redirigir después de 3 segundos
       },
       error => {
         console.error('Error en el inicio de sesión', error);

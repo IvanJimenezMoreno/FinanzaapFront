@@ -1,0 +1,27 @@
+.google-chart {
+  width: 100%;
+  height: 600px; 
+}
+
+.card {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-success {
+  color: #28a745; /* Verde legible en fondo blanco */
+}
+
+.text-danger {
+  color: #dc3545; /* Rojo legible en fondo blanco */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  font-size: 1.2rem;
+}

@@ -4,27 +4,23 @@ import { Router } from '@angular/router';
 import { ChartType } from 'angular-google-charts';
 
 @Component({
-  selector: 'app-graficos',
-  templateUrl: './graficos.component.html',
-  styleUrls: ['./graficos.component.css']
+  selector: 'app-movimientos',
+  templateUrl: './movimientos.component.html',
+  styleUrls: ['./movimientos.component.css']
 })
-export class GraficosComponent implements OnInit {
+export class MovimientosComponent implements OnInit {
   public chartData: any[] = [];
   public chartOptions = {
-    title: 'Ingresos y Gastos Mensuales',
-    hAxis: { title: 'Mes' },
-    vAxis: { title: 'Cantidad en euros' },
-    seriesType: 'bars',
-    series: {
-      0: { type: 'bars', color: 'blue' },
-      1: { type: 'bars', color: 'red' }
-    },
-    bar: { groupWidth: '75%' },
-    chartArea: { width: '80%', height: '70%' },
-    responsive: true
+    title: 'Movimientos',
+    showRowNumber: true,
+    width: '100%',
+    height: '100%'
   };
-  public chartType: ChartType = ChartType.ComboChart;
-  public chartColumns = ['Mes', 'Ingresos', 'Gastos'];
+  public chartType: ChartType = ChartType.Table;
+  public chartColumns = ['Fecha', 'Tipo', 'Monto', 'Notas'];
+  public totalIngresos: number = 0;
+  public totalGastos: number = 0;
+  public balance: number = 0;
 
   constructor(private movimientoService: MovimientoService, private router: Router) { }
 
@@ -44,10 +40,11 @@ export class GraficosComponent implements OnInit {
   }
 
   procesarDatos(movimientosPorMes: any[]): any[] {
-    const datosPorMes: any = {};
+    const datos: any[] = [];
+    this.totalIngresos = 0;
+    this.totalGastos = 0;
 
     movimientosPorMes.forEach(mesData => {
-      const mes = mesData.mes;
       const movimientos = mesData.movimientos;
 
       if (Array.isArray(movimientos)) {
@@ -55,14 +52,18 @@ export class GraficosComponent implements OnInit {
           if (movimiento && movimiento.fecha) {
             const fecha = new Date(movimiento.fecha);
             if (!isNaN(fecha.getTime())) {
-              const mesFormateado = fecha.toLocaleString('default', { month: 'long', year: 'numeric' });
-              if (!datosPorMes[mesFormateado]) {
-                datosPorMes[mesFormateado] = { ingresos: 0, gastos: 0 };
-              }
+              const monto = parseFloat(movimiento.monto) || 0;
+              datos.push([
+                fecha.toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric' }),
+                movimiento.tipo,
+                monto,
+                movimiento.notas || ''
+              ]);
+
               if (movimiento.tipo === 'ingreso') {
-                datosPorMes[mesFormateado].ingresos += parseFloat(movimiento.monto) || 0;
+                this.totalIngresos += monto;
               } else if (movimiento.tipo === 'gasto') {
-                datosPorMes[mesFormateado].gastos += parseFloat(movimiento.monto) || 0;
+                this.totalGastos += monto;
               }
             } else {
               console.error('Fecha inválida:', movimiento.fecha);
@@ -76,24 +77,13 @@ export class GraficosComponent implements OnInit {
       }
     });
 
-    console.log('Datos procesados:', datosPorMes);
-
-    // Ordenar los meses cronológicamente de manera ascendente
-    const mesesOrdenados = Object.keys(datosPorMes).sort((a, b) => {
-      const fechaA = new Date(a);
-      const fechaB = new Date(b);
-      return fechaA.getTime() - fechaB.getTime();
-    });
-
-    return mesesOrdenados.map(mes => [
-      mes,
-      datosPorMes[mes].ingresos,
-      datosPorMes[mes].gastos
-    ]);
+    this.balance = this.totalIngresos - this.totalGastos;
+    console.log('Datos procesados:', datos);
+    return datos;
   }
 
   cerrarSesion(): void {
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }
