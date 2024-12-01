@@ -23,6 +23,7 @@ export class LoginComponent {
         console.log('usuario autenticado:', response);
         localStorage.setItem('usuario', JSON.stringify(response.user));
         localStorage.setItem('token', response.access_token);
+        localStorage.setItem('admin', response.user.is_admin);
         this.authService.setAdminStatus(response.user.is_admin);
         this.mensaje = 'Inicio de sesión exitoso. Redirigiendo al inicio...';
         setTimeout(() => {

@@ -9,11 +9,15 @@ import { AuthService } from '../service/auth.service';
 })
 export class PrincipalComponent {
   usuario: any;
+  admin: any = localStorage.getItem('admin');
 
   constructor(private router:Router, public authService: AuthService) {}
 
   ngOnInit(): void {
     const usuario = localStorage.getItem('usuario');
+    
+
+    
     if (usuario) {
       this.usuario = JSON.parse(usuario);
     }

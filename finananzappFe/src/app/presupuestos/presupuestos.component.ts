@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PresupuestoService } from '../service/presupuesto.service';
+import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-presupuestos',
@@ -21,7 +23,7 @@ export class PresupuestosComponent implements OnInit {
   nombrePresupuestoAEliminar: string | null = null;
   mostrarModal = false;
 
-  constructor(private presupuestoService: PresupuestoService, private router: Router) { }
+  constructor(private presupuestoService: PresupuestoService, private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.obtenerPresupuestos();
