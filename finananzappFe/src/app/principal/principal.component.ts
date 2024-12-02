@@ -9,25 +9,28 @@ import { AuthService } from '../service/auth.service';
 })
 export class PrincipalComponent {
   usuario: any;
-  admin: any = localStorage.getItem('admin');
+  admin: any;
 
   constructor(private router:Router, public authService: AuthService) {}
 
   ngOnInit(): void {
     const usuario = localStorage.getItem('usuario');
+    const admin = localStorage.getItem('admin');
     
 
     
     if (usuario) {
       this.usuario = JSON.parse(usuario);
     }
+
+    if (admin) {
+      this.admin = JSON.parse(admin);
+    }
     
   }
 
   cerraSesion() {
-    localStorage.removeItem('usuario');
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.usuario = null;
     this.router.navigate(['/']);
     

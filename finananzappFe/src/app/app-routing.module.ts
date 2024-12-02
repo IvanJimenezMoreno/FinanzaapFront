@@ -8,6 +8,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { GraficosComponent } from './graficos/graficos.component';
 import { MovimientosComponent } from './movimientos/movimientos.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'presupuestos', component: PresupuestosComponent },
   { path: 'pagos', component: PagosComponent },
   { path: 'graficos', component: GraficosComponent },
-  { path: 'movimientos', component: MovimientosComponent }
+  { path: 'movimientos', component: MovimientosComponent },
+  {path: 'admin', component: AdminComponent}
 
 ];
 

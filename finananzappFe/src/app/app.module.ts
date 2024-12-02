@@ -16,6 +16,7 @@ import { PagosComponent } from './pagos/pagos.component';
 import { GraficosComponent } from './graficos/graficos.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { MovimientosComponent } from './movimientos/movimientos.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MovimientosComponent } from './movimientos/movimientos.component';
     PagosComponent,
     GraficosComponent,
     MovimientosComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
