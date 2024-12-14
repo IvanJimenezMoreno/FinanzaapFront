@@ -17,6 +17,7 @@ import { GraficosComponent } from './graficos/graficos.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { MovimientosComponent } from './movimientos/movimientos.component';
 import { AdminComponent } from './admin/admin.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
     GraficosComponent,
     MovimientosComponent,
     AdminComponent,
+    AyudaComponent,
   ],
   imports: [
     BrowserModule,
