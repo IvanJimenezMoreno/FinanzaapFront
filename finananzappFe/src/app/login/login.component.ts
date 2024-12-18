@@ -14,6 +14,7 @@ export class LoginComponent {
   };
 
   mensaje = '';
+  mensajeError = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -26,13 +27,14 @@ export class LoginComponent {
         localStorage.setItem('admin', response.user.is_admin);
         this.authService.setAdminStatus(response.user.is_admin);
         this.mensaje = 'Inicio de sesión exitoso. Redirigiendo al inicio...';
+        this.mensajeError = '';
         setTimeout(() => {
           this.router.navigate(['/principal']);
-        }, 3000); // Redirigir después de 3 segundos
+        }, 1500); 
       },
       error => {
         console.error('Error en el inicio de sesión', error);
-        this.mensaje = 'Error en el inicio de sesión. Por favor, verifica tus credenciales.';
+        this.mensajeError = 'Error en el inicio de sesión. Por favor, verifica tus credenciales.';
       }
     );
   }

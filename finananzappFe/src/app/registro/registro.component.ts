@@ -29,7 +29,7 @@ export class RegistroComponent {
         this.mensaje = 'Usuario registrado correctamente. Rediriendo a la página de inicio...';
         setTimeout(() => {
           this.router.navigate(['/']);
-        }, 3000);
+        }, 1500);
 
       },
       error => console.log(error)

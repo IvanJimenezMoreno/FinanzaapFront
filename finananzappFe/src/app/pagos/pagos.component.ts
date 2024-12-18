@@ -140,6 +140,7 @@ export class PagosComponent implements OnInit {
 
   cerrarSesion(): void {
     localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

@@ -10,12 +10,14 @@ import { AuthService } from '../service/auth.service';
 export class PrincipalComponent {
   usuario: any;
   admin: any;
+  token: string | null = '';
 
   constructor(private router:Router, public authService: AuthService) {}
 
   ngOnInit(): void {
     const usuario = localStorage.getItem('usuario');
     const admin = localStorage.getItem('admin');
+    this.token = localStorage.getItem('token');
     
 
     
@@ -30,9 +32,9 @@ export class PrincipalComponent {
   }
 
   cerraSesion() {
-    localStorage.clear();
-    this.usuario = null;
-    this.router.navigate(['/']);
-    
+          localStorage.clear();
+          this.usuario = null;
+          console.log('Sesión cerrada correctamente:');
+          this.router.navigate(['/']);
   }
 }

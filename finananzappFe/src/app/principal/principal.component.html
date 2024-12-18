@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary-dark mx-2" href="/perfil">Perfil</a>
+                    <a class="nav-link disabled btn btn-primary-dark mx-2" href="/perfil">Perfil</a>
                 </li>
                 <li class="nav-item" *ngIf="admin">
                     <a class="nav-link btn btn-primary-dark mx-2" routerLink="/admin">Panel de Administración</a>
@@ -32,28 +32,28 @@
             <div class="card p-4">
                 <h5 class="card-title">Crear y Configurar Presupuestos</h5>
                 <p class="card-text">Establece y configura tus presupuestos generales o por categorías.</p>
-                <a href="/presupuestos" class="btn btn-primary-dark">Ir a Presupuestos</a>
+                <a routerLink="/presupuestos"  class="btn btn-primary-dark">Ir a Presupuestos</a>
             </div>
         </div>
         <div class="col-md-6 mb-4">
             <div class="card p-4">
                 <h5 class="card-title">Registro de Movimientos</h5>
                 <p class="card-text">Añade y consulta tus movimientos financieros.</p>
-                <a href="/movimientos" class="btn btn-primary-dark">Ir a Movimientos</a>
+                <a routerLink="/movimientos" class="btn btn-primary-dark">Ir a Movimientos</a>
             </div>
         </div>
         <div class="col-md-6 mb-4">
             <div class="card p-4">
                 <h5 class="card-title">Gráficos e Informes</h5>
                 <p class="card-text">Visualiza gráficos y resúmenes de tus finanzas.</p>
-                <a href="/graficos" class="btn btn-primary-dark">Ir a Gráficos</a>
+                <a routerLink="/graficos" class="btn btn-primary-dark">Ir a Gráficos</a>
             </div>
         </div>
         <div class="col-md-6 mb-4">
             <div class="card p-4">
                 <h5 class="card-title">Pagos e Ingresos</h5>
                 <p class="card-text">Registra tus pagos e ingresos</p>
-                <a href="/pagos" class="btn btn-primary-dark">Ir a Pagos e Ingresos</a>
+                <a routerLink="/pagos" class="btn btn-primary-dark">Ir a Pagos e Ingresos</a>
             </div>
         </div>
     </div>

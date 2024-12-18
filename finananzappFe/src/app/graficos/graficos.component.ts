@@ -93,7 +93,7 @@ export class GraficosComponent implements OnInit {
   }
 
   cerrarSesion(): void {
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/']);
   }
 }
